@@ -1,0 +1,28 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - PYTHON-VERSION=python:3.7-alpine
+    env_file:
+      - .env.txt
+    ports:
+      - "5000:5000"
+    networks:
+      - appnetwork
+
+  redis:
+    image: "redis:alpine"
+    networks:
+      - appnetwork
+    volumes:
+      - myredisdata:/data
+
+networks:
+    appnetwork:
+volumes:
+  myredisdata:
+
+
