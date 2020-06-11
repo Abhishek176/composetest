@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - PYTHON-VERSION=python:3.7-alpine
+        PYTHON_VERSION: 3.7-alpine
     env_file:
       - env.txt
     ports:
@@ -24,5 +24,3 @@ networks:
     appnetwork:
 volumes:
   myredisdata:
-
-
